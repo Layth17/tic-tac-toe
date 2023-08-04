@@ -4,9 +4,9 @@ class HumanPlayer:
 
     def chooseAction(self, positions):
         while True:
-            row = int(input("Input your action row:"))
-            col = int(input("Input your action col:"))
-            action = (row, col)
+            row = int(input("Input your action row (1-3):"))
+            col = int(input("Input your action col (1-3):"))
+            action = (row - 1, col - 1)
             if action in positions:
                 return action
 

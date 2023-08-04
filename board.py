@@ -101,10 +101,10 @@ class Board:
     #  -+-+-     
     #  7|8|9
     
-    box = 0
+    # box = 0
     prefix = '#   '
     print()
-    print(f"#  p1: x  p2: o")
+    print(f"#  {self.p1.name}: x  {self.p2.name}: o")
     print(f"{prefix}")
     out = ""
     for i in range(0, self.dim):
@@ -114,7 +114,7 @@ class Board:
         if self.board[i, j] == -1:
             token = 'o'
         if self.board[i, j] == 0:
-            token = f'{box}'
+            token = " "
         out += token if j == 2 else token + '|'
         #box += 1
       print(f"{prefix}{out}")
