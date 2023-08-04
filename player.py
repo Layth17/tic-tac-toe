@@ -64,7 +64,7 @@ class Player:
     self.states = []
 
   def savePolicy(self, suffix=""):
-    fw = open('policy_' + str(self.name) + suffix, 'wb')
+    fw = open(f'policies/logs/policy_{str(self.name)}_{suffix}', 'wb')
     pickle.dump(self.states_value, fw)
     fw.close()
 

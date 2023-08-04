@@ -10,7 +10,7 @@ def train(iter=5000):
   
   print("training...")
   st.play(iter)
-  p1.savePolicy(suffix=f"_{iter}")
+  p1.savePolicy(suffix=f"{iter}")
   print("done training!\n")
   return None
 
