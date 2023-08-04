@@ -19,19 +19,25 @@ def train(iter=5000):
   st = Board(p1, p2)
   
   print("training...")
-  st.play(iter)
+  p1.logDetails(key=TIMESTAMP)
+  p2.logDetails(key=TIMESTAMP)
+  
+  st.play(iter, key=TIMESTAMP)
+  
   p1.savePolicy(key=TIMESTAMP)
+  p2.savePolicy(key=TIMESTAMP)
   print("done training!\n")
   return None
 
 def main():
   ITER = 1000
   TRAIN_MODE = True
+  PLAYER="p1"
   policy = "policy_default_50000"
   if TRAIN_MODE:
     createDirectories()
     train(ITER)
-    policy = f"./policies/logs_{TIMESTAMP}/policy_p1"
+    policy = f"./policies/logs_{TIMESTAMP}/policy_{PLAYER}"
   
   # play computer vs human
   p1 = Player("computer", exp_rate=0)

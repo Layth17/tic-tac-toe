@@ -34,7 +34,8 @@ class Board:
     # switch to another player after the current player has made his/her move
     self.playerSymbol = -1 if self.playerSymbol == 1 else 1
   
-  def winner(self):
+  def winner(self) -> int:
+    # 1 for p1, -1 for p2, 0 for draw
     # consider optimiz this function
     
     # row
@@ -129,11 +130,11 @@ class Board:
     self.isEnd = False
     self.playerSymbol = 1
         
-  def play(self, rounds=100):
-    for i in range(rounds):
-      if i % 1000 == 0:
-          print(f"Rounds {i}")
-          
+  def play(self, rounds=100, key=""):
+    rewardFile = open(f'policies/logs_{key}/reward.csv', 'wt')
+    rewardFile.write("rounds,reward,player,action,states\n")
+    
+    for i in range(1, rounds + 1):
       while not self.isEnd:
         # Player 1
         positions = self.availablePositions()
@@ -142,6 +143,9 @@ class Board:
         self.updateState(p1_action)
         board_hash = self.getHash()
         self.p1.addState(board_hash)
+        
+        # log
+        rewardFile.write(f"{i},r,{self.p1.name},{p1_action}\n")
         
         # check board status if it is end
         win = self.winner()
@@ -164,6 +168,9 @@ class Board:
           board_hash = self.getHash()
           self.p2.addState(board_hash)
           
+          # log
+          rewardFile.write(f"{i},r,{self.p2.name},{p2_action}\n")
+          
           # check board status if it is end
           win = self.winner()
           
@@ -176,7 +183,7 @@ class Board:
               self.p2.reset()
               self.reset()
               break
-
+        
   def playHuman(self):
     """
     # play with human

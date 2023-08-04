@@ -4,10 +4,10 @@ import pickle
 
 class Player:
   
-  def __init__(self, name, exp_rate=0.3):
+  def __init__(self, name, exp_rate=0.3, lr=0.2, decay_gamma=0.9):
     self.name = name
     self.states = []  # record all positions taken
-    self.lr = 0.2 # learning rate
+    self.lr = lr # learning rate
     
     # ϵ-greedy method to balance between exploration and exploitation
     # exp_rate = .3 
@@ -15,7 +15,7 @@ class Player:
     # ==> 30% random action
     self.exp_rate = exp_rate
     
-    self.decay_gamma = 0.9
+    self.decay_gamma = decay_gamma
     self.states_value = {}  # state -> value
     
   def getHash(self, board, dim=3):
@@ -64,8 +64,15 @@ class Player:
   def reset(self):
     self.states = []
 
+  def logDetails(self, key=""):
+    with open(f'policies/logs_{key}/log_{self.name}', 'wt') as file:
+      file.write(f"Learning rate: {self.lr}\n")
+      file.write(f"Decay gamma: {self.decay_gamma}\n")
+      file.write(f"Exploration Rate: {self.exp_rate}\n")
+    return None
+  
   def savePolicy(self, key=""):
-    fw = open(f'policies/logs_{key}/policy_p1', 'wb')
+    fw = open(f'policies/logs_{key}/policy_{self.name}', 'wb')
     pickle.dump(self.states_value, fw)
     fw.close()
 
