@@ -1,4 +1,5 @@
 import numpy as np
+import datetime as dt
 import pickle
 
 class Player:
@@ -63,8 +64,8 @@ class Player:
   def reset(self):
     self.states = []
 
-  def savePolicy(self, suffix=""):
-    fw = open(f'policies/logs/policy_{str(self.name)}_{suffix}', 'wb')
+  def savePolicy(self, key=""):
+    fw = open(f'policies/logs_{key}/policy_p1', 'wb')
     pickle.dump(self.states_value, fw)
     fw.close()
 

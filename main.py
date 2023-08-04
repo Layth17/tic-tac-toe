@@ -1,6 +1,16 @@
 from board import Board
 from player import Player
 from human import HumanPlayer
+import os
+from datetime import datetime
+
+TIMESTAMP = f'{datetime.now().day}{datetime.now().month}{datetime.now().year}_{datetime.now().hour}{datetime.now().minute}{datetime.now().second}'
+
+def createDirectories():
+  directory_path = f'./policies/logs_{TIMESTAMP}'
+  os.makedirs(directory_path)
+  print(f"Directory '{directory_path}' created.")
+  return None
 
 def train(iter=5000):
   # training
@@ -10,18 +20,22 @@ def train(iter=5000):
   
   print("training...")
   st.play(iter)
-  p1.savePolicy(suffix=f"{iter}")
+  p1.savePolicy(key=TIMESTAMP)
   print("done training!\n")
   return None
 
 def main():
-  ITER = 50000
-  TRAIN_MODE = False
-  if TRAIN_MODE: train(ITER)
+  ITER = 1000
+  TRAIN_MODE = True
+  policy = "policy_default_50000"
+  if TRAIN_MODE:
+    createDirectories()
+    train(ITER)
+    policy = f"./policies/logs_{TIMESTAMP}/policy_p1"
   
   # play computer vs human
   p1 = Player("computer", exp_rate=0)
-  p1.loadPolicy(f"policy_p1_50000")
+  p1.loadPolicy(policy)
 
   p2 = HumanPlayer("human")
 
