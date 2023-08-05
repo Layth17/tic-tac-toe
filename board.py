@@ -104,7 +104,7 @@ class Board:
     #  -+-+-     
     #  7|8|9
     
-    board = open(f'policies/logs_{key}/board.txt', 'wt')
+    board = open(f'policies/logs_{key}/board.txt', 'at')
     prefix = '#   '
     board.write(f"#  {self.p1.name}: x  {self.p2.name}: o\n")
     board.write(f"{prefix}\n")
@@ -183,7 +183,7 @@ class Board:
         
         # if it is the end, give rewards and reset
         if win is not None:
-          self.showBoard(key=key)
+          self.logBoard(key=key)
           # ended with p1 either win or draw
           self.reward()
           self.p1.reset()
@@ -207,7 +207,7 @@ class Board:
           
           # if it is the end, give rewards and reset
           if win is not None:
-              self.showBoard()
+              self.logBoard(key=key)
               # ended with p2 either win or draw
               self.reward()
               self.p1.reset()
