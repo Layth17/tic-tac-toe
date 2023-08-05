@@ -35,8 +35,9 @@ class Board:
     self.playerSymbol = -1 if self.playerSymbol == 1 else 1
   
   def winner(self) -> int:
-    # 1 for p1, -1 for p2, 0 for draw
-    # consider optimiz this function
+    # 1 for p1, -1 for p2, 0 for draw,
+    # None for not the end of the game
+    # consider optimizing this function
     
     # row
     for i in range(self.dim):
@@ -89,10 +90,40 @@ class Board:
         self.p1.feedReward(0)
         self.p2.feedReward(1)
     else: # draw
+        # punish p1 more harshly since we want it to win
         self.p1.feedReward(0.1)
         self.p2.feedReward(0.5)
     return None
   
+  def logBoard(self, key):
+    # p1: x  p2: o
+    # 
+    #  1|2|3  
+    #  -+-+-
+    #  4|5|6       
+    #  -+-+-     
+    #  7|8|9
+    
+    board = open(f'policies/logs_{key}/board.txt', 'wt')
+    prefix = '#   '
+    board.write(f"#  {self.p1.name}: x  {self.p2.name}: o\n")
+    board.write(f"{prefix}\n")
+    out = ""
+    for i in range(0, self.dim):
+      for j in range(0, self.dim):
+        if self.board[i, j] == 1:
+            token = 'x'
+        if self.board[i, j] == -1:
+            token = 'o'
+        if self.board[i, j] == 0:
+            token = " "
+        out += token if j == 2 else token + '|'
+      board.write(f"{prefix}{out}\n")
+      out = ""
+      
+      if i < self.dim - 1: board.write(f'{prefix}-+-+-\n') 
+    board.write("#\n")
+
   def showBoard(self):
     # p1: x  p2: o
     # 
@@ -131,8 +162,8 @@ class Board:
     self.playerSymbol = 1
         
   def play(self, rounds=100, key=""):
-    rewardFile = open(f'policies/logs_{key}/reward.csv', 'wt')
-    rewardFile.write("rounds,reward,player,action,states\n")
+    actionFile = open(f'policies/logs_{key}/action.csv', 'wt')
+    actionFile.write("rounds,reward,player,action,states\n")
     
     for i in range(1, rounds + 1):
       while not self.isEnd:
@@ -145,14 +176,14 @@ class Board:
         self.p1.addState(board_hash)
         
         # log
-        rewardFile.write(f"{i},r,{self.p1.name},{p1_action}\n")
+        actionFile.write(f"{i},r,{self.p1.name},{p1_action}\n")
         
         # check board status if it is end
         win = self.winner()
         
         # if it is the end, give rewards and reset
         if win is not None:
-          # self.showBoard()
+          self.showBoard(key=key)
           # ended with p1 either win or draw
           self.reward()
           self.p1.reset()
@@ -169,14 +200,14 @@ class Board:
           self.p2.addState(board_hash)
           
           # log
-          rewardFile.write(f"{i},r,{self.p2.name},{p2_action}\n")
+          actionFile.write(f"{i},r,{self.p2.name},{p2_action}\n")
           
           # check board status if it is end
           win = self.winner()
           
           # if it is the end, give rewards and reset
           if win is not None:
-              # self.showBoard()
+              self.showBoard()
               # ended with p2 either win or draw
               self.reward()
               self.p1.reset()
