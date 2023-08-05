@@ -33,6 +33,7 @@ def main():
   ITER = 1000
   TRAIN_MODE = True
   PLAYER="p1"
+  
   policy = "policy_default_50000"
   if TRAIN_MODE:
     createDirectories()

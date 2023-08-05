@@ -1,6 +1,7 @@
 import numpy as np
 import datetime as dt
 import pickle
+import json
 
 class Player:
   
@@ -75,6 +76,13 @@ class Player:
     fw = open(f'policies/logs_{key}/policy_{self.name}', 'wb')
     pickle.dump(self.states_value, fw)
     fw.close()
+    self.saveReadablePolicy(key)
+    
+  def saveReadablePolicy(self, key=""):
+      with open(f'policies/logs_{key}/readable_policy_{self.name}.txt', 'wt') as f:
+        json.dump(pickle.load(open(f'policies/logs_{key}/policy_{self.name}', 'rb')),
+                  f,
+                  indent=2)
 
   def loadPolicy(self, file):
     fr = open(file, 'rb')
