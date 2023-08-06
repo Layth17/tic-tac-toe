@@ -8,6 +8,6 @@ This work builds upon this source [here](https://towardsdatascience.com/reinforc
 
 ### TODO:
 - [x] Added player 2 policy
-- [x] human vs computer improved
-- [ ] Improve logging
+- [x] Improved human vs computer 
+- [x] Improved logging
 - [ ] Perform analysis
