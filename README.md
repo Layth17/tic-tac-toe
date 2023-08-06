@@ -7,5 +7,7 @@ This work builds upon this source [here](https://towardsdatascience.com/reinforc
 ![formula](./images/formula.png)
 
 ### TODO:
+- [x] Added player 2 policy
+- [x] human vs computer improved
 - [ ] Improve logging
 - [ ] Perform analysis
