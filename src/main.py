@@ -59,6 +59,7 @@ def computerVersusHuman(policy_p1, policy_p2):
   return None
 
 def main():
+  # hardcoded policies for gamin'
   policy_p1 = "../policies/logs_582023_19237/policy_p1"
   policy_p2 = "../policies/logs_582023_19237/policy_p2"
   
