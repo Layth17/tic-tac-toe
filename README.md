@@ -4,7 +4,7 @@ Applying RL to play tic-tac-toe
 This work builds upon this source [here](https://towardsdatascience.com/reinforcement-learning-implement-tictactoe-189582bea542)
 
 ### RL formula
-![formula](./images/gh3pkr8w.bmp)
+![formula](./images/formula.png)
 
 ### TODO:
 - [ ] Improve logging
