@@ -41,6 +41,7 @@ def main():
   
   # play computer vs human
   p1 = Player("computer", exp_rate=0)
+  print(f"Loaded policy: {policy}")
   p1.loadPolicy(policy)
 
   p2 = HumanPlayer("human")
