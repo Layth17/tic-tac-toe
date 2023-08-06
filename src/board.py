@@ -220,10 +220,17 @@ class Board:
     """
     # play with human
     """
+    
     while not self.isEnd:
       # Player 1
       positions = self.availablePositions()
-      p1_action = self.p1.chooseAction(positions, self.board, self.playerSymbol)
+      
+      if self.p1.name == "human":
+        self.showBoard() 
+        p1_action = self.p1.chooseAction(positions)
+      else: 
+        p1_action = self.p1.chooseAction(positions, self.board, self.playerSymbol)
+      
       # take action and upate board state
       self.updateState(p1_action)
       self.showBoard()
@@ -240,8 +247,12 @@ class Board:
       else:
         # Player 2
         positions = self.availablePositions()
-        p2_action = self.p2.chooseAction(positions)
-
+        
+        if self.p2.name == "human": 
+          p2_action = self.p2.chooseAction(positions)
+        else: 
+          p2_action = self.p2.chooseAction(positions, self.board, self.playerSymbol)
+        
         self.updateState(p2_action)
         self.showBoard()
         win = self.winner()

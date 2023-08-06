@@ -6,7 +6,7 @@ from datetime import datetime
 
 TIMESTAMP = f'{datetime.now().day}{datetime.now().month}{datetime.now().year}_{datetime.now().hour}{datetime.now().minute}{datetime.now().second}'
 ITER = 50_000
-TRAIN_MODE = True
+TRAIN_MODE = False
 PLAYER="p1"
   
 def createDirectories():
@@ -32,22 +32,44 @@ def train(iter):
   print("done training!\n")
   return None
 
+def computerVersusHuman(policy_p1, policy_p2):
+  # play computer vs human
+  whoStarts = input("Who should start [c]omputer/[h]uman: ")
+  try:
+    if whoStarts == 'h':
+      p1 = HumanPlayer("human")
+
+      p2 = Player("computer", exp_rate=0)
+      p2.loadPolicy(policy_p2)
+      print(f"Loaded policy: {policy_p2}")
+    elif whoStarts == 'c':
+      p1 = Player("computer", exp_rate=0)
+      p1.loadPolicy(policy_p1)
+      print(f"Loaded policy: {policy_p1}")
+
+      p2 = HumanPlayer("human")
+    else:
+      raise Exception("Sorry, input must be 'h' or 'c' (case sensitive)") 
+  except Exception as e:
+    print(e)
+    exit()
+    
+  st = Board(p1, p2)
+  st.playHuman()
+  return None
+
 def main():
-  policy = "../policies/policy_default_50000"
+  policy_p1 = "../policies/logs_582023_19237/policy_p1"
+  policy_p2 = "../policies/logs_582023_19237/policy_p2"
+  
   if TRAIN_MODE:
     createDirectories()
     train(ITER)
-    policy = f"../policies/logs_{TIMESTAMP}/policy_{PLAYER}"
+    policy_p1 = f"../policies/logs_{TIMESTAMP}/policy_p1"
+    policy_p2 = f"../policies/logs_{TIMESTAMP}/policy_p2"
   
-  # play computer vs human
-  p1 = Player("computer", exp_rate=0)
-  print(f"Loaded policy: {policy}")
-  p1.loadPolicy(policy)
-
-  p2 = HumanPlayer("human")
-
-  st = Board(p1, p2)
-  st.playHuman()
+  computerVersusHuman(policy_p1, policy_p2)
+  return None
 
 if __name__ == "__main__":
   main()
