@@ -163,7 +163,7 @@ class Board:
         
   def play(self, rounds=100, key=""):
     actionFile = open(f'policies/logs_{key}/action.csv', 'wt')
-    actionFile.write("rounds,reward,player,action,states\n")
+    actionFile.write("rounds,player,action\n")
     
     for i in range(1, rounds + 1):
       while not self.isEnd:
@@ -176,7 +176,7 @@ class Board:
         self.p1.addState(board_hash)
         
         # log
-        actionFile.write(f"{i},r,{self.p1.name},{p1_action}\n")
+        actionFile.write(f"{i},{self.p1.name},{p1_action}\n")
         
         # check board status if it is end
         win = self.winner()
@@ -200,7 +200,7 @@ class Board:
           self.p2.addState(board_hash)
           
           # log
-          actionFile.write(f"{i},r,{self.p2.name},{p2_action}\n")
+          actionFile.write(f"{i},{self.p2.name},{p2_action}\n")
           
           # check board status if it is end
           win = self.winner()

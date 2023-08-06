@@ -17,6 +17,9 @@ class Player:
     self.exp_rate = exp_rate
     
     self.decay_gamma = decay_gamma
+    
+    # a dict in which the key is a board position
+    # and the value is the winning chances broadly speaking (??)
     self.states_value = {}  # state -> value
     
   def getHash(self, board, dim=3):
@@ -24,27 +27,26 @@ class Player:
     return boardHash
       
   def chooseAction(self, positions, current_board, symbol):
-      # generate a random percentage and check if
-      # it meets our random move threshold
-      if np.random.uniform(0, 1) <= self.exp_rate:
-        idx = np.random.choice(len(positions))
-        action = positions[idx]
-      else:
-        value_max = -999
-        for p in positions:
-          # housekeeping
-          next_board = current_board.copy()
-          next_board[p] = symbol
-          next_boardHash = self.getHash(next_board)
-          
-          # if hash for next state does not exist, then return 0 otherwise get that value
-          value = 0 if self.states_value.get(next_boardHash) is None else self.states_value.get(next_boardHash)
-          # print("value", value)
-          if value >= value_max:
-            value_max = value
-            action = p
-      # print(f"{self.name} takes action {action}")
-      return action
+    # generate a random percentage and check if
+    # it meets our random move threshold
+    if np.random.uniform(0, 1) <= self.exp_rate:
+      idx = np.random.choice(len(positions))
+      action = positions[idx]
+    else:
+      value_max = -999
+      for p in positions:
+        # housekeeping
+        next_board = current_board.copy()
+        next_board[p] = symbol
+        next_boardHash = self.getHash(next_board)
+        
+        # if hash for next state does not exist, then return 0 otherwise get that value
+        value = 0 if self.states_value.get(next_boardHash) is None else self.states_value.get(next_boardHash)
+        # print("value", value)
+        if value >= value_max:
+          value_max = value
+          action = p
+    return action
   
   def feedReward(self, reward) -> None:
     # at the end of game, backpropagate and update states value

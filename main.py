@@ -5,14 +5,17 @@ import os
 from datetime import datetime
 
 TIMESTAMP = f'{datetime.now().day}{datetime.now().month}{datetime.now().year}_{datetime.now().hour}{datetime.now().minute}{datetime.now().second}'
-
+ITER = 50000
+TRAIN_MODE = True
+PLAYER="p1"
+  
 def createDirectories():
   directory_path = f'./policies/logs_{TIMESTAMP}'
   os.makedirs(directory_path)
   print(f"Directory '{directory_path}' created.")
   return None
 
-def train(iter=5000):
+def train(iter=1000):
   # training
   p1 = Player("p1")
   p2 = Player("p2")
@@ -30,10 +33,6 @@ def train(iter=5000):
   return None
 
 def main():
-  ITER = 1000
-  TRAIN_MODE = True
-  PLAYER="p1"
-  
   policy = "policy_default_50000"
   if TRAIN_MODE:
     createDirectories()
