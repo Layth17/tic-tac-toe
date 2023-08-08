@@ -28,4 +28,36 @@ This work builds upon this source [here](https://towardsdatascience.com/reinforc
   <img class="fade" src="./images/9.png" style="width:60%;height:60%;">
 </div>
 
+-------------------------------
+
+### Most Played Endings
+
+This position was played 1549 times!
+  p1: x  p2: o
+   
+   x|o|x
+   -+-+-
+   o|x|x
+   -+-+-
+   o|x|o
+
+This position was played 1490 times!
+  p1: x  p2: o
+   
+   x|x|o
+   -+-+-
+   o|x|x
+   -+-+-
+   x|o|o
+
+This position was played 1483 times!
+  p1: x  p2: o
+   
+   x|o|x
+   -+-+-
+   x|x|o
+   -+-+-
+   o|x|o
+
+
 
