@@ -20,22 +20,8 @@ This work builds upon this source [here](https://towardsdatascience.com/reinforc
 <style>
   .image-container {
     position: relative;
-    width: 300px; /* Adjust to your image dimensions */
-    height: 200px;
-  }
-
-  .fade {
-    animation-name: fade;
-    animation-duration: 2s; /* Control the duration of the fade */
-  }
-
-  @keyframes fade {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
+    width: 200px; /* Adjust to your image dimensions */
+    height: 100px;
   }
 </style>
 </head>
