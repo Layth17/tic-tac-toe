@@ -17,15 +17,10 @@ This work builds upon this source [here](https://towardsdatascience.com/reinforc
 
 <div class="image-container">
   <img class="fade" src="./images/0.png" style="width:40%;height:40%;"> <img class="fade" src="./images/1.png" style="width:40%;height:40%;"> 
-   
-  <img class="fade" src="./images/2.png" style="width:60%;height:60%;">
-  <img class="fade" src="./images/3.png" style="width:60%;height:60%;">  
-  <img class="fade" src="./images/4.png" style="width:60%;height:60%;">
-  <img class="fade" src="./images/5.png" style="width:60%;height:60%;">  
-  <img class="fade" src="./images/6.png" style="width:60%;height:60%;">
-  <img class="fade" src="./images/7.png" style="width:60%;height:60%;">
-  <img class="fade" src="./images/8.png" style="width:60%;height:60%;">
-  <img class="fade" src="./images/9.png" style="width:60%;height:60%;">
+  <img class="fade" src="./images/2.png" style="width:40%;height:40%;"> <img class="fade" src="./images/3.png" style="width:40%;height:40%;">  
+  <img class="fade" src="./images/4.png" style="width:40%;height:40%;"> <img class="fade" src="./images/5.png" style="width:40%;height:40%;">  
+  <img class="fade" src="./images/6.png" style="width:40%;height:40%;"> <img class="fade" src="./images/7.png" style="width:40%;height:40%;">
+  <img class="fade" src="./images/8.png" style="width:40%;height:40%;"> <img class="fade" src="./images/9.png" style="width:40%;height:40%;">
 </div>
 
 -------------------------------
