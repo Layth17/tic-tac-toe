@@ -32,6 +32,7 @@ This work builds upon this source [here](https://towardsdatascience.com/reinforc
 
 ### Most Played Endings
 
+``` text
 This position was played 1549 times!
   p1: x  p2: o
    
@@ -40,6 +41,7 @@ This position was played 1549 times!
    o|x|x
    -+-+-
    o|x|o
+```
 
 This position was played 1490 times!
   p1: x  p2: o
