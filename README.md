@@ -33,7 +33,7 @@ This work builds upon this source [here](https://towardsdatascience.com/reinforc
 ### Most Played Endings
 
 ``` text
-This position was played **1549** times!
+This position was played 1549 times!
   p1: x  p2: o
    
    x|o|x
@@ -44,7 +44,7 @@ This position was played **1549** times!
 ```
 
 ``` text
-This position was played **1490** times!
+This position was played 1490 times!
   p1: x  p2: o
    
    x|x|o
@@ -55,7 +55,7 @@ This position was played **1490** times!
 ```
 
 ``` text
-This position was played **1483** times!
+This position was played 1483 times!
   p1: x  p2: o
    
    x|o|x
