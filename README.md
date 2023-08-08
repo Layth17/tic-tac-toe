@@ -14,32 +14,17 @@ This work builds upon this source [here](https://towardsdatascience.com/reinforc
 
 -------------------------------
 
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-  .image-container {
-    position: relative;
-    width: 200px; /* Adjust to your image dimensions */
-    height: 100px;
-  }
-</style>
-</head>
-<body>
-
 <div class="image-container">
-  <img class="fade" src="./images/0.png" style="width:100%">
-  <img class="fade" src="./images/1.png" style="width:100%">  
-  <img class="fade" src="./images/2.png" style="width:100%">
-  <img class="fade" src="./images/3.png" style="width:100%">  
-  <img class="fade" src="./images/4.png" style="width:100%">
-  <img class="fade" src="./images/5.png" style="width:100%">  
-  <img class="fade" src="./images/6.png" style="width:100%">
-  <img class="fade" src="./images/7.png" style="width:100%">
-  <img class="fade" src="./images/8.png" style="width:100%">
-  <img class="fade" src="./images/9.png" style="width:100%">
+  <img class="fade" src="./images/0.png" style="width:60%;height:60%;" >
+  <img class="fade" src="./images/1.png" style="width:60%;height:60%;">  
+  <img class="fade" src="./images/2.png" style="width:60%;height:60%;">
+  <img class="fade" src="./images/3.png" style="width:60%;height:60%;">  
+  <img class="fade" src="./images/4.png" style="width:60%;height:60%;">
+  <img class="fade" src="./images/5.png" style="width:60%;height:60%;">  
+  <img class="fade" src="./images/6.png" style="width:60%;height:60%;">
+  <img class="fade" src="./images/7.png" style="width:60%;height:60%;">
+  <img class="fade" src="./images/8.png" style="width:60%;height:60%;">
+  <img class="fade" src="./images/9.png" style="width:60%;height:60%;">
 </div>
 
-</body>
-</html>
 
