@@ -15,7 +15,7 @@ This work builds upon this source [here](https://towardsdatascience.com/reinforc
 
 -------------------------------
 ### The Ultimate Draw:
-__note: this is based on trial 582023_19237__
+> *note: this is based on policy 582023_19237*
 
 <div class="image-container">
   <img class="fade" src="./images/0.png" style="width:40%;height:40%;"> <img class="fade" src="./images/1.png" style="width:40%;height:40%;"> 
