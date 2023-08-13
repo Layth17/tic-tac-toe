@@ -24,9 +24,7 @@ Applying RL to play (n by n) tic-tac-toe
   <img class="fade" src="./images/8.png" style="width:40%;height:40%;"> <img class="fade" src="./images/9.png" style="width:40%;height:40%;">
 </div>
 
--------------------------------
-
-### Most Played Endings
+### Most Played Endings:
 
 ``` text
 This position was played 1549 times!
