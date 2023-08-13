@@ -1,7 +1,6 @@
 # tic-tac-toe: *extended*
-Applying RL to play 3x3 tic-tac-toe
-
-This work builds upon this source [here](https://towardsdatascience.com/reinforcement-learning-implement-tictactoe-189582bea542)
+Applying RL to play (n by n) tic-tac-toe
+> This work builds upon this source [here](https://towardsdatascience.com/reinforcement-learning-implement-tictactoe-189582bea542)
 
 ### RL formula
 ![formula](./images/formula.png)

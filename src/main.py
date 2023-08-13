@@ -8,7 +8,8 @@ TIMESTAMP = f'{datetime.now().day}{datetime.now().month}{datetime.now().year}_{d
 ITER = 50_000
 TRAIN_MODE = False
 PLAYER="p1"
-  
+DIM=3  
+
 def createDirectories():
   directory_path = f'../policies/logs_{TIMESTAMP}'
   os.makedirs(directory_path)
