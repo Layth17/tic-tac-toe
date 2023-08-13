@@ -26,7 +26,7 @@ class Player:
     boardHash = str(board.reshape(dim * dim))
     return boardHash
       
-  def chooseAction(self, positions, current_board, symbol):
+  def chooseAction(self, positions, current_board, symbol, dim):
     # generate a random percentage and check if
     # it meets our random move threshold
     if np.random.uniform(0, 1) <= self.exp_rate:
@@ -38,7 +38,7 @@ class Player:
         # housekeeping
         next_board = current_board.copy()
         next_board[p] = symbol
-        next_boardHash = self.getHash(next_board)
+        next_boardHash = self.getHash(next_board, dim)
         
         # if hash for next state does not exist, then return 0 otherwise get that value
         value = 0 if self.states_value.get(next_boardHash) is None else self.states_value.get(next_boardHash)
@@ -67,22 +67,23 @@ class Player:
   def reset(self):
     self.states = []
 
-  def logDetails(self, key=""):
-    with open(f'../policies/logs_{key}/log_{self.name}', 'wt') as file:
+  def logDetails(self, key="", dim=3):
+    with open(f'../policies/{dim}/logs_{key}/log_{self.name}', 'wt') as file:
       file.write(f"Learning rate: {self.lr}\n")
       file.write(f"Decay gamma: {self.decay_gamma}\n")
       file.write(f"Exploration Rate: {self.exp_rate}\n")
+      file.write(f"Dim: {dim}x{dim}\n")
     return None
   
-  def savePolicy(self, key=""):
-    fw = open(f'../policies/logs_{key}/policy_{self.name}', 'wb')
+  def savePolicy(self, key="", dim=3):
+    fw = open(f'../policies/{dim}/logs_{key}/policy_{self.name}', 'wb')
     pickle.dump(self.states_value, fw)
     fw.close()
-    self.saveReadablePolicy(key)
+    self.saveReadablePolicy(key, dim)
     
-  def saveReadablePolicy(self, key=""):
-      with open(f'../policies/logs_{key}/readable_policy_{self.name}.txt', 'wt') as f:
-        json.dump(pickle.load(open(f'../policies/logs_{key}/policy_{self.name}', 'rb')),
+  def saveReadablePolicy(self, key="", dim=3):
+      with open(f'../policies/{dim}/logs_{key}/readable_policy_{self.name}.txt', 'wt') as f:
+        json.dump(pickle.load(open(f'../policies/{dim}/logs_{key}/policy_{self.name}', 'rb')),
                   f,
                   indent=2)
 

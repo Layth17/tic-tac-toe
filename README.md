@@ -13,7 +13,7 @@ Applying RL to play (n by n) tic-tac-toe
 - [ ] Extend to 4x4
 
 -------------------------------
-### The Ultimate Draw:
+### The Ultimate Draw 3x3:
 > *note: this is based on policy 582023_19237*
 
 <div class="image-container">

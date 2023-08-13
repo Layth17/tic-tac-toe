@@ -1,11 +1,12 @@
 class HumanPlayer:
-    def __init__(self, name):
+    def __init__(self, name, dim=3):
         self.name = name
+        self.dim = dim
 
     def chooseAction(self, positions):
         while True:
-            row = int(input("Input your action row (1-3):"))
-            col = int(input("Input your action col (1-3):"))
+            row = int(input(f"Input your action row (1-{self.dim}):"))
+            col = int(input(f"Input your action col (1-{self.dim}):"))
             action = (row - 1, col - 1)
             if action in positions:
                 return action

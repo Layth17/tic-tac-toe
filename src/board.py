@@ -3,10 +3,11 @@ from tqdm import trange
 
 class Board:
 
-  def __init__(self, p1, p2, DIM=3):
+  def __init__(self, p1, p2, DIM=3, KEY="0000"):
     self.dim = DIM
     self.board = np.zeros((self.dim, self.dim))
     self.BOARD_SIZE = self.dim * self.dim
+    self.key = KEY
     
     # this is a player class
     self.p1 = p1 
@@ -42,27 +43,27 @@ class Board:
     
     # row
     for i in range(self.dim):
-        if sum(self.board[i, :]) == 3:
+        if sum(self.board[i, :]) == self.dim:
             self.isEnd = True
             return 1
-        if sum(self.board[i, :]) == -3:
+        if sum(self.board[i, :]) == -self.dim:
             self.isEnd = True
             return -1
     # col
     for i in range(self.dim):
-        if sum(self.board[:, i]) == 3:
+        if sum(self.board[:, i]) == self.dim:
             self.isEnd = True
             return 1
-        if sum(self.board[:, i]) == -3:
+        if sum(self.board[:, i]) == -self.dim:
             self.isEnd = True
             return -1
     # diagonal
     diag_sum1 = sum([self.board[i, i] for i in range(self.dim)])
     diag_sum2 = sum([self.board[i, self.dim - i - 1] for i in range(self.dim)])
     diag_sum = max(abs(diag_sum1), abs(diag_sum2))
-    if diag_sum == 3:
+    if diag_sum == self.dim:
         self.isEnd = True
-        if diag_sum1 == 3 or diag_sum2 == 3:
+        if diag_sum1 == self.dim or diag_sum2 == self.dim:
             return 1
         else:
             return -1
@@ -96,7 +97,7 @@ class Board:
         self.p2.feedReward(0.5)
     return None
   
-  def logBoard(self, key):
+  def logBoard(self):
     # p1: x  p2: o
     # 
     #  1|2|3  
@@ -105,7 +106,7 @@ class Board:
     #  -+-+-     
     #  7|8|9
     
-    board = open(f'../policies/logs_{key}/board.txt', 'at')
+    board = open(f'../policies/{self.dim}/logs_{self.key}/board.txt', 'at')
     prefix = '#   '
     board.write(f"#  {self.p1.name}: x  {self.p2.name}: o\n")
     board.write(f"{prefix}\n")
@@ -118,7 +119,8 @@ class Board:
             token = 'o'
         if self.board[i, j] == 0:
             token = " "
-        out += token if j == 2 else token + '|'
+        # detect if it is the last item in a row
+        out += token if j == self.dim - 1 else token + '|'
       board.write(f"{prefix}{out}\n")
       out = ""
       
@@ -134,7 +136,6 @@ class Board:
     #  -+-+-     
     #  7|8|9
     
-    # box = 0
     prefix = '#   '
     print()
     print(f"#  {self.p1.name}: x  {self.p2.name}: o")
@@ -148,8 +149,8 @@ class Board:
             token = 'o'
         if self.board[i, j] == 0:
             token = " "
-        out += token if j == 2 else token + '|'
-        #box += 1
+        # detect if it is the last item in a row
+        out += token if j == self.dim - 1 else token + '|'
       print(f"{prefix}{out}")
       out = ""
       
@@ -162,15 +163,15 @@ class Board:
     self.isEnd = False
     self.playerSymbol = 1
         
-  def play(self, rounds=100, key=""):
-    actionFile = open(f'../policies/logs_{key}/action.csv', 'wt')
+  def play(self, rounds=100):
+    actionFile = open(f'../policies/{self.dim}/logs_{self.key}/action.csv', 'wt')
     actionFile.write("rounds,player,action\n")
     
     for i in trange(1, rounds + 1):
       while not self.isEnd:
         # Player 1
         positions = self.availablePositions()
-        p1_action = self.p1.chooseAction(positions, self.board, self.playerSymbol)
+        p1_action = self.p1.chooseAction(positions, self.board, self.playerSymbol, self.dim)
         # take action and upate board state
         self.updateState(p1_action)
         board_hash = self.getHash()
@@ -184,7 +185,7 @@ class Board:
         
         # if it is the end, give rewards and reset
         if win is not None:
-          self.logBoard(key=key)
+          self.logBoard()
           # ended with p1 either win or draw
           self.reward()
           self.p1.reset()
@@ -195,7 +196,7 @@ class Board:
         else:
           # Player 2
           positions = self.availablePositions()
-          p2_action = self.p2.chooseAction(positions, self.board, self.playerSymbol)
+          p2_action = self.p2.chooseAction(positions, self.board, self.playerSymbol, self.dim)
           self.updateState(p2_action)
           board_hash = self.getHash()
           self.p2.addState(board_hash)
@@ -208,7 +209,7 @@ class Board:
           
           # if it is the end, give rewards and reset
           if win is not None:
-              self.logBoard(key=key)
+              self.logBoard()
               # ended with p2 either win or draw
               self.reward()
               self.p1.reset()
@@ -227,9 +228,9 @@ class Board:
       
       if self.p1.name == "human":
         self.showBoard() 
-        p1_action = self.p1.chooseAction(positions)
+        p1_action = self.p1.chooseAction(positions, self.dim)
       else: 
-        p1_action = self.p1.chooseAction(positions, self.board, self.playerSymbol)
+        p1_action = self.p1.chooseAction(positions, self.board, self.playerSymbol, self.dim)
       
       # take action and upate board state
       self.updateState(p1_action)
@@ -249,9 +250,9 @@ class Board:
         positions = self.availablePositions()
         
         if self.p2.name == "human": 
-          p2_action = self.p2.chooseAction(positions)
+          p2_action = self.p2.chooseAction(positions, self.dim)
         else: 
-          p2_action = self.p2.chooseAction(positions, self.board, self.playerSymbol)
+          p2_action = self.p2.chooseAction(positions, self.board, self.playerSymbol, self.dim)
         
         self.updateState(p2_action)
         self.showBoard()
