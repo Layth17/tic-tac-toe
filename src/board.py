@@ -137,6 +137,7 @@ class Board:
     #  7|8|9
     
     prefix = '#   '
+    div = '-+' * (self.dim - 1)
     print()
     print(f"#  {self.p1.name}: x  {self.p2.name}: o")
     print(f"{prefix}")
@@ -154,7 +155,7 @@ class Board:
       print(f"{prefix}{out}")
       out = ""
       
-      if i < self.dim - 1: print(f'{prefix}-+-+-') 
+      if i < self.dim - 1: print(f'{prefix}{div}-') 
     print("#\n")
 
   def reset(self):
@@ -228,7 +229,7 @@ class Board:
       
       if self.p1.name == "human":
         self.showBoard() 
-        p1_action = self.p1.chooseAction(positions, self.dim)
+        p1_action = self.p1.chooseAction(positions)
       else: 
         p1_action = self.p1.chooseAction(positions, self.board, self.playerSymbol, self.dim)
       
@@ -250,7 +251,7 @@ class Board:
         positions = self.availablePositions()
         
         if self.p2.name == "human": 
-          p2_action = self.p2.chooseAction(positions, self.dim)
+          p2_action = self.p2.chooseAction(positions)
         else: 
           p2_action = self.p2.chooseAction(positions, self.board, self.playerSymbol, self.dim)
         

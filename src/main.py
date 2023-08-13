@@ -5,16 +5,22 @@ import os
 from datetime import datetime
 
 TIMESTAMP = f'{datetime.now().day}{datetime.now().month}{datetime.now().year}_{datetime.now().hour}{datetime.now().minute}{datetime.now().second}'
-ITER = 50_000
-TRAIN_MODE = False
+ITER = 100_000
+TRAIN_MODE = True
 PLAYER="p1"
-DIM=3  
+DIM=4 
 
 def createDirectories():
   directory_path = f'../policies/{DIM}/logs_{TIMESTAMP}'
   os.makedirs(directory_path)
   print(f"Directory '{directory_path}' created.")
   return None
+
+def logIter():
+  with open(f'../policies/{DIM}/logs_{TIMESTAMP}/log_p1', 'at') as file:
+    file.write(f"Iter: {ITER}\n")
+  with open(f'../policies/{DIM}/logs_{TIMESTAMP}/log_p2', 'at') as file:
+    file.write(f"Iter: {ITER}\n")
 
 def train(iter):
   # training
@@ -26,6 +32,8 @@ def train(iter):
   p1.logDetails(TIMESTAMP, DIM)
   p2.logDetails(TIMESTAMP, DIM)
   
+  logIter()
+    
   st.play(iter)
   
   p1.savePolicy(TIMESTAMP, DIM)
@@ -64,7 +72,10 @@ def main():
   if DIM == 3:
     policy_p1 = f"../policies/3/logs_582023_19237/policy_p1"
     policy_p2 = f"../policies/3/logs_582023_19237/policy_p2"
-  
+  if DIM == 4:
+    policy_p1 = f"../policies/4/logs_1382023_161738/policy_p1"
+    policy_p2 = f"../policies/4/logs_1382023_161738/policy_p2"
+    
   # overwrite with the most recently-trained policy
   if TRAIN_MODE:
     createDirectories()
