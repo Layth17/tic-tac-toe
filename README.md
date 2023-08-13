@@ -11,6 +11,7 @@ Applying RL to play (n by n) tic-tac-toe
 - [x] Improved logging
 - [x] Performed action space analysis
 - [ ] Extend to 4x4
+- [ ] it might be necessary to write a better reward function if we are to extend
 
 -------------------------------
 ### The Ultimate Draw 3x3:
