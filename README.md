@@ -25,6 +25,7 @@ Applying RL to play (n by n) tic-tac-toe
 </div>
 
 ### Most Played Endings:
+> *note: information is extracted from ./analysis_3by3/games.json*
 
 ``` text
 This position was played 1549 times!
