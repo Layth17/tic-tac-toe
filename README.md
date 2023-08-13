@@ -1,5 +1,5 @@
 # tic-tac-toe
-Applying RL to play tic-tac-toe
+Applying RL to play 3x3 tic-tac-toe
 
 This work builds upon this source [here](https://towardsdatascience.com/reinforcement-learning-implement-tictactoe-189582bea542)
 
@@ -11,6 +11,7 @@ This work builds upon this source [here](https://towardsdatascience.com/reinforc
 - [x] Improved human vs computer 
 - [x] Improved logging
 - [x] Performed action space analysis
+- [ ] Extend to 4x4
 
 -------------------------------
 ### The Ultimate Draw:
