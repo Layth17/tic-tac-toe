@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 
 TIMESTAMP = f'{datetime.now().day}{datetime.now().month}{datetime.now().year}_{datetime.now().hour}{datetime.now().minute}{datetime.now().second}'
-ITER = 100_000
+ITER = 200_000
 TRAIN_MODE = True
 PLAYER="p1"
 DIM=4 
@@ -73,8 +73,8 @@ def main():
     policy_p1 = f"../policies/3/logs_582023_19237/policy_p1"
     policy_p2 = f"../policies/3/logs_582023_19237/policy_p2"
   if DIM == 4:
-    policy_p1 = f"../policies/4/logs_1382023_161738/policy_p1"
-    policy_p2 = f"../policies/4/logs_1382023_161738/policy_p2"
+    policy_p1 = f"../policies/4/logs_1382023_163357/policy_p1"
+    policy_p2 = f"../policies/4/logs_1382023_163357/policy_p2"
     
   # overwrite with the most recently-trained policy
   if TRAIN_MODE:

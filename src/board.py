@@ -111,6 +111,7 @@ class Board:
     board.write(f"#  {self.p1.name}: x  {self.p2.name}: o\n")
     board.write(f"{prefix}\n")
     out = ""
+    div = '-+' * (self.dim - 1)
     for i in range(0, self.dim):
       for j in range(0, self.dim):
         if self.board[i, j] == 1:
@@ -124,7 +125,7 @@ class Board:
       board.write(f"{prefix}{out}\n")
       out = ""
       
-      if i < self.dim - 1: board.write(f'{prefix}-+-+-\n') 
+      if i < self.dim - 1: board.write(f'{prefix}{div}-\n') 
     board.write("#\n")
 
   def showBoard(self):
