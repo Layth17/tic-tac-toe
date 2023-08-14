@@ -12,6 +12,7 @@ Applying RL to play (n by n) tic-tac-toe
 - [x] Performed action space analysis
 - [ ] Extend to 4x4?
 - [ ] Implement Variants?
+- [ ] Add the ability to train on top of previous policies
 
 -------------------------------
 ### The Ultimate Draw 3x3:
