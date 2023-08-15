@@ -1,6 +1,7 @@
 # tic-tac-toe: *extended*
 Applying RL to play tic-tac-toe
 > This work builds upon this source [here](https://towardsdatascience.com/reinforcement-learning-implement-tictactoe-189582bea542)
+> note: this is no longer an install-and-play product because it was *extended*.
 
 ### RL formula
 ![formula](./images/formula.png)
@@ -10,11 +11,11 @@ Applying RL to play tic-tac-toe
 - [x] Improved human vs computer 
 - [x] Improved logging
 - [x] Performed action space analysis
-- [?] Extend to 4x4? -- this endeavour has revealed many problems 
-- [ ] Implement Variants?
 - [x] Add the ability to train on top of previous policies
 - [ ] Make above ^ more user-friendly 
 - [ ] Pass command-line arguments
+- [ ] Extend to 4x4? -- this endeavour has revealed many problems 
+- [ ] Implement other variants?
 
 -------------------------------
 ### The Ultimate Draw 3x3:

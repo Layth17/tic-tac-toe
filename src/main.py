@@ -69,6 +69,7 @@ def computerVersusHuman(policy_p1, policy_p2):
 
 def main():
   # hardcoded policies for gamin'
+  # TODO: this needs to be cleaned up
   if DIM == 3:
     policy_p1 = f"../policies/3/logs_582023_19237/policy_p1"
     policy_p2 = f"../policies/3/logs_582023_19237/policy_p2"
