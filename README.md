@@ -13,6 +13,7 @@ Applying RL to play tic-tac-toe
 - [ ] Extend to 4x4?
 - [ ] Implement Variants?
 - [ ] Add the ability to train on top of previous policies
+- [ ] Pass command-line arguments
 
 -------------------------------
 ### The Ultimate Draw 3x3:

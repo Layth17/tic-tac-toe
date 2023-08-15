@@ -5,7 +5,7 @@ import json
 
 class Player:
   
-  def __init__(self, name, exp_rate=0.3, lr=0.2, decay_gamma=0.9):
+  def __init__(self, name, exp_rate=0.3, lr=0.2, decay_gamma=0.9, file=""):
     self.name = name
     self.states = []  # record all positions taken
     self.lr = lr # learning rate
@@ -20,8 +20,9 @@ class Player:
     
     # a dict in which the key is a board position
     # and the value is the winning chances broadly speaking (??)
-    self.states_value = {}  # state -> value
-    
+    if file == "": self.states_value = {}  # state -> value
+    else: self.loadPolicy(file)
+      
   def getHash(self, board, dim=3):
     boardHash = str(board.reshape(dim * dim))
     return boardHash
