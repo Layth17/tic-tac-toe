@@ -1,6 +1,7 @@
 # tic-tac-toe: *extended*
 Applying RL to play tic-tac-toe
 > This work builds upon this source [here](https://towardsdatascience.com/reinforcement-learning-implement-tictactoe-189582bea542)
+
 > note: this is no longer an install-and-play product because it was *extended*.
 
 ### RL formula
