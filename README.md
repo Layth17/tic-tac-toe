@@ -10,7 +10,7 @@ Applying RL to play tic-tac-toe
 - [x] Improved human vs computer 
 - [x] Improved logging
 - [x] Performed action space analysis
-- [ ] Extend to 4x4?
+- [?] Extend to 4x4? -- this endeavour has revealed many problems 
 - [ ] Implement Variants?
 - [x] Add the ability to train on top of previous policies
 - [ ] Make above ^ more user-friendly 
