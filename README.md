@@ -12,7 +12,8 @@ Applying RL to play tic-tac-toe
 - [x] Performed action space analysis
 - [ ] Extend to 4x4?
 - [ ] Implement Variants?
-- [ ] Add the ability to train on top of previous policies
+- [x] Add the ability to train on top of previous policies
+- [ ] Make above ^ more user-friendly 
 - [ ] Pass command-line arguments
 
 -------------------------------

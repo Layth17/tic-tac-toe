@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 
 TIMESTAMP = f'{datetime.now().day}{datetime.now().month}{datetime.now().year}_{datetime.now().hour}{datetime.now().minute}{datetime.now().second}'
-ITER = 1_000_000
+ITER = 100_000
 TRAIN_MODE = False
 PLAYER="p1"
 DIM=4 
@@ -25,7 +25,7 @@ def logIter():
 def train(iter):
   # training
   p1 = Player("p1", file="../policies/4/logs_1482023_134039/policy_p1")
-  p2 = Player("p2", file="../policies/4/logs_1482023_134039/policy_p2")
+  p2 = Player("p2", exp_rate=.6, file="../policies/4/logs_1482023_134039/policy_p2")
   st = Board(p1, p2, DIM, TIMESTAMP)
   
   print("training...")

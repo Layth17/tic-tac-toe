@@ -1,5 +1,0 @@
-Learning rate: 0.2
-Decay gamma: 0.9
-Exploration Rate: 0.3
-Dim: 3x3
-Iter: 50000
